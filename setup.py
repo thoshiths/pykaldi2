@@ -23,8 +23,6 @@ def check_output(*args, **kwargs):
 # Set minimum version requirements for external dependencies
 ################################################################################
 
-KALDI_MIN_REQUIRED = '5dc5d41bb603ba935c6244c7b32788ea90b9cee3'
-
 ################################################################################
 # Check variables / find programs
 ################################################################################
@@ -73,16 +71,6 @@ if not os.path.isfile(KALDI_MK_PATH):
   print("\nCould not find Kaldi.\nPlease install Kaldi under the tools "
         "directory or set KALDI_DIR environment variable.", file=sys.stderr)
   sys.exit(1)
-
-try:
-    KALDI_HEAD = check_output(['git', '-C', KALDI_DIR, 'rev-parse', 'HEAD'])
-    subprocess.check_call(['git', '-C', KALDI_DIR, 'merge-base',
-                           '--is-ancestor', KALDI_MIN_REQUIRED, KALDI_HEAD])
-except subprocess.CalledProcessError:
-    print("\nKaldi installation at {} is not supported.\nPlease update Kaldi "
-          "to match https://github.com/pykaldi/kaldi/tree/pykaldi."
-          .format(KALDI_DIR), file=sys.stderr)
-    sys.exit(1)
 
 with open("Makefile", "w") as makefile:
     print("include {}".format(KALDI_MK_PATH), file=makefile)
