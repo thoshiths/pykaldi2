@@ -15,18 +15,18 @@ else
 fi
 
 cd "$KALDI_DIR/tools"
-git pull
 
 # Prevent kaldi from switching default python version
 mkdir -p "python"
 touch "python/.use_default_python"
 
 ./extras/check_dependencies.sh
+./install_mkl.sh
 
-make -j4
+make -j $(lscpu | grep  "^CPU(s)" | awk '{print $NF}')
 
 cd ../src
-./configure --shared
-make clean -j && make depend -j && make -j4
+./configure --shared --mkl-root=/opt/intel/mkl
+make clean -j && make depend -j && make -j $(lscpu | grep  "^CPU(s)" | awk '{print $NF}')
 
 echo "Done installing Kaldi."
