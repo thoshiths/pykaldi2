@@ -102,7 +102,7 @@ fi
 
 ######################################################################
 
-CLIF_GIT="-b pykaldi https://github.com/pykaldi/clif.git"
+CLIF_GIT="-b clif https://github.com/thoshith-s/pykaldi.git"
 LLVM_DIR="$CLIF_DIR/../clif_backend"
 BUILD_DIR="$LLVM_DIR/build_matcher"
 
@@ -142,9 +142,11 @@ fi
 
 mkdir -p "$LLVM_DIR"
 cd "$LLVM_DIR"
-svn co https://llvm.org/svn/llvm-project/llvm/trunk@307315 llvm
+git clone -b llvm https://github.com/thoshith-s/pykaldi.git llvm 
+#svn co https://llvm.org/svn/llvm-project/llvm/trunk@307315 llvm
 cd llvm/tools
-svn co https://llvm.org/svn/llvm-project/cfe/trunk@307315 clang
+git clone -b clang https://github.com/thoshith-s/pykaldi.git clang 
+#svn co https://llvm.org/svn/llvm-project/cfe/trunk@307315 clang
 ln -s -f -n "$CLIF_DIR/clif" clif
 
 # Build and install the CLIF backend.  Our backend is part of the llvm build.
