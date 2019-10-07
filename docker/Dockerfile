@@ -1,7 +1,5 @@
-# Dockerfile for building PyKaldi image from Ubuntu 16.04 image
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
-# Install necessary system packages
 RUN apt-get update \
     && apt-get install -y \
     python3 \
@@ -12,6 +10,7 @@ RUN apt-get update \
     cmake \
     curl \
     g++ \
+    vim \
     git \
     graphviz \
     libatlas3-base \
@@ -21,28 +20,20 @@ RUN apt-get update \
     subversion \
     unzip \
     wget \
+    sox \ 
+    ninja-build \
     zlib1g-dev
 
-# Make python3 default
 RUN ln -s /usr/bin/python3 /usr/bin/python \
     && ln -s /usr/bin/pip3 /usr/bin/pip
 
-# Install necessary Python packages
-RUN pip install --upgrade pip \
-    numpy \
-    setuptools \
-    pyparsing \
-    jupyter \
-    ninja
-
-# Copy pykaldi directory into the container
-COPY . /pykaldi
-
-# Install Protobuf, CLIF, Kaldi and PyKaldi
-RUN cd /pykaldi/tools \
-    && ./check_dependencies.sh \
+RUN git clone https://github.com/thoshith-s/pykaldi.git /pykaldi \
+    && cd /pykaldi/ \
+    && pip install --upgrade pip \
+    && pip install -r requirements.txt \
+    && cd /pykaldi/tools && ./check_dependencies.sh \
     && ./install_protobuf.sh \
     && ./install_clif.sh \
     && ./install_kaldi.sh \
-    && cd .. \
+    && cd ../ \
     && python setup.py install
