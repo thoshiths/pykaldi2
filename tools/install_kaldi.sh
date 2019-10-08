@@ -27,6 +27,7 @@ make -j $(nproc)
 
 cd ../src
 ./configure --shared --mkl-root=/opt/intel/mkl
+sed "s/\-O1/\-O3/g" kaldi.mk
 make clean -j && make depend -j && make -j $(nproc)
 
 echo "Done installing Kaldi."
