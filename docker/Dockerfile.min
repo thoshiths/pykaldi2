@@ -1,3 +1,4 @@
+# Build min version of pykaldi (approx docker image size 7.15GB)
 FROM ubuntu:18.04
 
 RUN apt-get update \
@@ -43,6 +44,8 @@ RUN apt-get update \
     && make -j $(nproc) \
     && find . -name "*.a" -delete \
     && find . -name "*.o" -delete \
+    && find /opt/intel/ -name "*.o" -delete \
+    && find /opt/intel/ -name "*.a" -delete \
     && export KALDI_DIR=/kaldi/ \ 
     && cd /pykaldi/tools \
     && git clone -b protobuf https://github.com/thoshith-s/pykaldi.git protobuf \
