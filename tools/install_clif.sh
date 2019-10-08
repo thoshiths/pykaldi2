@@ -102,7 +102,7 @@ fi
 
 ######################################################################
 
-CLIF_GIT="-b clif https://thoshith-s:c2abd10d6fada1bab13e3809abd6eedc103bd620@github.com/thoshith-s/pykaldi.git"
+CLIF_GIT="-b clif https://github.com/thoshith-s/pykaldi.git"
 LLVM_DIR="$CLIF_DIR/../clif_backend"
 BUILD_DIR="$LLVM_DIR/build_matcher"
 
@@ -142,10 +142,10 @@ fi
 
 mkdir -p "$LLVM_DIR"
 cd "$LLVM_DIR"
-git clone -b llvm https://thoshith-s:c2abd10d6fada1bab13e3809abd6eedc103bd620@github.com/thoshith-s/pykaldi.git llvm 
+git clone -b llvm https://github.com/thoshith-s/pykaldi.git llvm 
 #svn co https://llvm.org/svn/llvm-project/llvm/trunk@307315 llvm
 cd llvm/tools
-git clone -b clang https://thoshith-s:c2abd10d6fada1bab13e3809abd6eedc103bd620@github.com/thoshith-s/pykaldi.git clang 
+git clone -b clang https://github.com/thoshith-s/pykaldi.git clang 
 #svn co https://llvm.org/svn/llvm-project/cfe/trunk@307315 clang
 ln -s -f -n "$CLIF_DIR/clif" clif
 
