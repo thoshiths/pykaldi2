@@ -1,3 +1,4 @@
+# Build full version of pykaldi (approx docker image size 22.1GB)
 FROM ubuntu:18.04
 
 RUN apt-get update \
