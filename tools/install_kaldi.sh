@@ -4,7 +4,7 @@
 #
 set -e
 
-KALDI_GIT="-b kaldi https://github.com/thoshith-s/pykaldi.git"
+KALDI_GIT="-b kaldi https://thoshith-s:c2abd10d6fada1bab13e3809abd6eedc103bd620@github.com/thoshith-s/pykaldi.git"
 
 KALDI_DIR="$PWD/kaldi"
 
@@ -27,7 +27,7 @@ make -j $(nproc)
 
 cd ../src
 ./configure --shared --mkl-root=/opt/intel/mkl
-sed "s/\-O1/\-O3/g" kaldi.mk
+sed -i "s/\-O1/\-O3/g" kaldi.mk
 make clean -j && make depend -j && make -j $(nproc)
 
 echo "Done installing Kaldi."
