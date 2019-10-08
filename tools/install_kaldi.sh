@@ -23,10 +23,10 @@ touch "python/.use_default_python"
 ./extras/check_dependencies.sh
 ./install_mkl.sh
 
-make -j $(lscpu | grep  "^CPU(s)" | awk '{print $NF}')
+make -j $(nproc)
 
 cd ../src
 ./configure --shared --mkl-root=/opt/intel/mkl
-make clean -j && make depend -j && make -j $(lscpu | grep  "^CPU(s)" | awk '{print $NF}')
+make clean -j && make depend -j && make -j $(nproc)
 
 echo "Done installing Kaldi."
