@@ -13,7 +13,7 @@
 #   Modifies $PATH and $PKG_CONFIG_PATH
 #
 set -e
-PROTOBUF_GIT="-b protobuf https://thoshith-s:c2abd10d6fada1bab13e3809abd6eedc103bd620@github.com/thoshith-s/pykaldi.git"
+PROTOBUF_GIT="-b protobuf https://github.com/thoshith-s/pykaldi.git"
 
 PROTOBUF_DIR="$PWD/protobuf"
 
