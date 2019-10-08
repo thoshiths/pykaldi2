@@ -6,7 +6,7 @@ set -e
 
 KALDI_GIT="-b kaldi https://github.com/thoshith-s/pykaldi.git"
 
-KALDI_DIR="$PWD/kaldi"
+KALDI_DIR="/kaldi"
 
 if [ ! -d "$KALDI_DIR" ]; then
   git clone $KALDI_GIT $KALDI_DIR
