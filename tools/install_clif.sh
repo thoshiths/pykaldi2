@@ -124,12 +124,12 @@ if which ninja; then
   # ninja can run a dozen huge ld processes at once during install without
   # this flag... grinding a 12 core workstation with "only" 32GiB to a halt.
   # linking and installing should be I/O bound anyways.
-  MAKE_INSTALL_PARALLELISM=(-j 2)
+  MAKE_INSTALL_PARALLELISM=(-j $(nproc))
   echo "Using ninja for the clif backend build."
 else
   CMAKE_G_FLAGS=()  # The default generates a Makefile.
   MAKE_OR_NINJA="make"
-  MAKE_PARALLELISM=(-j 8)
+  MAKE_PARALLELISM=(-j $(nproc))
   if [[ -r /proc/cpuinfo ]]; then
     N_CPUS="$(cat /proc/cpuinfo | grep -c ^processor)"
     [[ "$N_CPUS" -gt 0 ]] && MAKE_PARALLELISM=(-j $N_CPUS)
