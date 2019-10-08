@@ -32,9 +32,13 @@ RUN apt-get update \
     && ./install_protobuf.sh \
     && ./install_clif.sh \
     && ./install_kaldi.sh \
+    && export KALDI_DIR=/kaldi/ \
     && cd ../ \
     && python setup.py install \
     && python setup.py test \
+    && apt clean \
+    && apt autoclean \
+    && apt autoremove \
     && echo "export PATH=\"/opt/intel/bin:/kaldi/src/cudadecoderbin:/kaldi/src/base:/kaldi/src/bins:/kaldi/src/bin:/kaldi/src/chainbin:/kaldi/src/featbin:/kaldi/src/fgmmbin:/kaldi/src/fstbin:/kaldi/src/gmmbin:/kaldi/src/ivectorbin:/kaldi/src/kwsbin:/kaldi/src/latbin:/kaldi/src/lmbin:/kaldi/src/nnet2bin:/kaldi/src/nnet3bin:/kaldi/src/nnetbin:/kaldi/src/online2bin:/kaldi/src/onlinebin:/kaldi/src/sgmm2bin:/kaldi/src/tfrnnlmbin:/kaldi/src/gst-plugin:/kaldi/tools/openfst/bin:/kaldi/tools/srilm/lm/bin/i686-m64:${PATH}\"" >> /root/.bashrc \
     && echo "export KALDI_DIR=/kaldi/" >> /root/.bashrc \
     && echo "export LD_LIBRARY_PATH=\"${LD_LIBRARY_PATH}:/kaldi/tools/openfst/lib:/kaldi/src/lib\"" >> /root/.bashrc \
