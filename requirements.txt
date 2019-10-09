@@ -1,3 +1,4 @@
+setuptools
 icc-rt==2019.0
 intel-numpy==1.15.1
 intel-openmp==2019.0
