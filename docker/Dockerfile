@@ -4,6 +4,7 @@ FROM ubuntu:18.04
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
     ffmpeg \
+    bc \
     python3 \
     python3-pip \
     python2.7 \
