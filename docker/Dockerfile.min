@@ -1,8 +1,8 @@
-# Build min version of pykaldi (approx docker image size 7.15GB)
+# Build min version of pykaldi (approx docker image size 7.35GB)
 FROM ubuntu:18.04
 
 RUN apt-get update \
-    && apt-get install --no-install-recommends -y \
+    && apt-get install -y \
     ffmpeg \
     bc \
     python3 \
@@ -25,9 +25,10 @@ RUN apt-get update \
     wget \
     sox \ 
     ninja-build \
-    zlib1g-dev \ 
+    zlib1g-dev \
     && ln -s /usr/bin/python3 /usr/bin/python \
     && ln -s /usr/bin/pip3 /usr/bin/pip \
+    && export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib:/usr/bin/python \
     && git clone -b pykaldi https://github.com/thoshith-s/pykaldi.git /pykaldi \
     && cd /pykaldi/ \
     && pip install -r requirements.txt \
@@ -72,7 +73,7 @@ RUN apt-get update \
     && apt autoremove \
     && echo "export PATH=\"/opt/intel/bin:/kaldi/src/cudadecoderbin:/kaldi/src/base:/kaldi/src/bins:/kaldi/src/bin:/kaldi/src/chainbin:/kaldi/src/featbin:/kaldi/src/fgmmbin:/kaldi/src/fstbin:/kaldi/src/gmmbin:/kaldi/src/ivectorbin:/kaldi/src/kwsbin:/kaldi/src/latbin:/kaldi/src/lmbin:/kaldi/src/nnet2bin:/kaldi/src/nnet3bin:/kaldi/src/nnetbin:/kaldi/src/online2bin:/kaldi/src/onlinebin:/kaldi/src/sgmm2bin:/kaldi/src/tfrnnlmbin:/kaldi/src/gst-plugin:/kaldi/tools/openfst/bin:/kaldi/tools/srilm/lm/bin/i686-m64:${PATH}\"" >> /root/.bashrc \
     && echo "export KALDI_DIR=/kaldi/" >> /root/.bashrc \
-    && echo "export LD_LIBRARY_PATH=\"${LD_LIBRARY_PATH}:/kaldi/tools/openfst/lib:/kaldi/src/lib\"" >> /root/.bashrc \
+    && echo "export LD_LIBRARY_PATH=\"${LD_LIBRARY_PATH}:/kaldi/tools/openfst/lib:/usr/local/lib:/usr/bin/python:/kaldi/src/lib\"" >> /root/.bashrc \
     && echo "export KALDI_ROOT=\"/kaldi\"" >> /root/.bashrc \
     && echo "export MKL_NUM_THREADS=1" >> /root/.bashrc \
     && echo "export LANG=C.UTF-8" >> /root/.bashrc
