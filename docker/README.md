@@ -1,3 +1,7 @@
+
+Dockerfile : Full version 
+Dockerfile.min : Minimal version (deletes unwanted files)
+
 # Building Pykaldi Image
 
 ```bash
