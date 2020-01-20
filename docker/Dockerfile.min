@@ -23,7 +23,7 @@ RUN apt-get update \
     subversion \
     unzip \
     wget \
-    sox \ 
+    sox \
     ninja-build \
     zlib1g-dev \
     && ln -s /usr/bin/python3 /usr/bin/python \
