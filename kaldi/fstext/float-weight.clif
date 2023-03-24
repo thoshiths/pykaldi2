@@ -3,154 +3,117 @@ from "fstext/weight-clifwrap.h" import *
 from "fstext/float-weight-ext.h":
   namespace `fst`:
     class `FloatLimits<float>` as FloatLimits:
-      """Float limits."""
+      
       @classmethod
-      def `PosInfinity` as pos_infinity(cls) -> float:
-        """Returns float +infinity."""
+      def `PosInfinity` as pos_infinity(cls) -> float
 
       @classmethod
-      def `NegInfinity` as neg_infinity(cls) -> float:
-        """Returns float -infinity."""
+      def `NegInfinity` as neg_infinity(cls) -> float
 
       @classmethod
-      def `NumberBad` as number_bad(cls) -> float:
-        """Returns float bad number."""
+      def `NumberBad` as number_bad(cls) -> float
 
     class `FloatWeightTpl<float>` as FloatWeight:
-      """Base class for float weight types."""
+      
       @add__init__
-      def `FloatWeightTpl` as from_float(self, f: float):
-        """Create a new float weight from a float."""
+      def `FloatWeightTpl` as from_float(self, f: float)
       @add__init__
-      def `FloatWeightTpl` as from_other(self, weight: FloatWeight):
-        """Create a new float weight from another."""
+      def `FloatWeightTpl` as from_other(self, weight: FloatWeight)
 
-      def `Hash` as hash(self) -> int:
-        """Returns the hash for the weight."""
+      def `Hash` as hash(self) -> int
 
       value: `float` as float = property(`Value`)
-      """Float value of the weight."""
+      
 
       def __eq__(self, other: FloatWeight) -> bool
       def __ne__(self, other: FloatWeight) -> bool
 
     def `ApproxEqual` as approx_equal_float_weight(w1: FloatWeight, w2: FloatWeight,
-                                                   delta: float = default) -> bool:
-      """Checks if given float weights are approximately equal."""
+                                                   delta: float = default) -> bool
 
     class `TropicalWeightTpl<float>` as TropicalWeight(FloatWeight):
-      """Tropical weight."""
+      
 
       @add__init__
-      def `TropicalWeightTpl` as from_float(self, f: float):
-        """Create a new tropical weight from a float."""
+      def `TropicalWeightTpl` as from_float(self, f: float)
 
       @add__init__
-      def `TropicalWeightTpl` as from_other(self, weight: TropicalWeight):
-        """Create a new tropical weight from another."""
+      def `TropicalWeightTpl` as from_other(self, weight: TropicalWeight)
 
       @classmethod
-      def `Zero` as zero(cls) -> TropicalWeight:
-        """Zero in tropical semiring, i.e. float +infinity."""
+      def `Zero` as zero(cls) -> TropicalWeight
 
       @classmethod
-      def `One` as one(cls) -> TropicalWeight:
-        """One in tropical semiring, i.e. 0.0."""
+      def `One` as one(cls) -> TropicalWeight
 
       @classmethod
-      def `NoWeight` as no_weight(cls) -> TropicalWeight:
-        """No weight in tropical semiring."""
+      def `NoWeight` as no_weight(cls) -> TropicalWeight
 
       @classmethod
-      def `Type` as type(cls) -> str:
-        """Returns weight type."""
+      def `Type` as type(cls) -> str
 
       @classmethod
-      def `Properties` as properties(cls) -> int:
-        """Returns weight properties."""
+      def `Properties` as properties(cls) -> int
 
-      def `Member` as member(self) -> bool:
-        """Checks if weight is a member of the tropical semiring."""
+      def `Member` as member(self) -> bool
 
-      def `Quantize` as quantize(self, delta: float = default) -> TropicalWeight:
-        """Quantizes the weight."""
+      def `Quantize` as quantize(self, delta: float = default) -> TropicalWeight
 
-      def `Reverse` as reverse(self) -> TropicalWeight:
-        """Reverses the weight."""
+      def `Reverse` as reverse(self) -> TropicalWeight
 
     def `Plus` as plus_tropical_weight(w1: TropicalWeight,
-                                       w2: TropicalWeight) -> TropicalWeight:
-      """:math:`\\oplus` operation in the tropical semiring."""
+                                       w2: TropicalWeight) -> TropicalWeight
 
     def `Times` as times_tropical_weight(w1: TropicalWeight,
-                                         w2: TropicalWeight) -> TropicalWeight:
-      """:math:`\\otimes` operation in the tropical semiring."""
+                                         w2: TropicalWeight) -> TropicalWeight
 
     def `Divide` as divide_tropical_weight(w1: TropicalWeight, w2: TropicalWeight,
-                                           typ: DivideType = default) -> TropicalWeight:
-      """:math:`\\oslash` operation in the tropical semiring."""
+                                           typ: DivideType = default) -> TropicalWeight
 
     def `Power` as power_tropical_weight(weight: TropicalWeight,
-                                         scalar: `float` as float) -> TropicalWeight:
-      """Power operation in the tropical semiring."""
+                                         scalar: `float` as float) -> TropicalWeight
 
     class `LogWeightTpl<float>` as LogWeight(FloatWeight):
-      """Log weight."""
+      
 
       @add__init__
-      def `LogWeightTpl` as from_float(self, f: float):
-        """Create a new log weight from a float."""
+      def `LogWeightTpl` as from_float(self, f: float)
 
       @add__init__
-      def `LogWeightTpl` as from_other(self, weight: LogWeight):
-        """Create a new log weight from another."""
+      def `LogWeightTpl` as from_other(self, weight: LogWeight)
 
       @classmethod
-      def `Zero` as zero(cls) -> LogWeight:
-        """Zero in log semiring, i.e. float +infinity."""
+      def `Zero` as zero(cls) -> LogWeight
 
       @classmethod
-      def `One` as one(cls) -> LogWeight:
-        """One in log semiring, i.e. 0.0."""
+      def `One` as one(cls) -> LogWeight
 
       @classmethod
-      def `NoWeight` as no_weight(cls) -> LogWeight:
-        """No weight in log semiring."""
+      def `NoWeight` as no_weight(cls) -> LogWeight
 
       @classmethod
-      def `Type` as type(cls) -> str:
-        """Returns weight type."""
+      def `Type` as type(cls) -> str
 
       @classmethod
-      def `Properties` as properties(cls) -> int:
-        """Returns weight properties."""
+      def `Properties` as properties(cls) -> int
 
-      def `Member` as member(self) -> bool:
-        """Checks if weight is a member of log semiring."""
+      def `Member` as member(self) -> bool
 
-      def `Quantize` as quantize(self, delta: float = default) -> LogWeight:
-        """Quantizes the weight."""
+      def `Quantize` as quantize(self, delta: float = default) -> LogWeight
 
-      def `Reverse` as reverse(self) -> LogWeight:
-        """Reverses the weight."""
+      def `Reverse` as reverse(self) -> LogWeight
 
-    def `Plus` as plus_log_weight(w1: LogWeight, w2: LogWeight) -> LogWeight:
-      """:math:`\\oplus` operation in the log semiring."""
+    def `Plus` as plus_log_weight(w1: LogWeight, w2: LogWeight) -> LogWeight
 
-    def `Times` as times_log_weight(w1: LogWeight, w2: LogWeight) -> LogWeight:
-      """:math:`\\otimes` operation in the log semiring."""
+    def `Times` as times_log_weight(w1: LogWeight, w2: LogWeight) -> LogWeight
 
-    def `Divide` as divide_log_weight(w1: LogWeight, w2: LogWeight, typ: DivideType = default) -> LogWeight:
-      """:math:`\\oslash` operation in the log semiring."""
+    def `Divide` as divide_log_weight(w1: LogWeight, w2: LogWeight, typ: DivideType = default) -> LogWeight
 
-    def `Power` as power_log_weight(weight: LogWeight, scalar: `float` as float) -> LogWeight:
-      """Power operation in the log semiring."""
+    def `Power` as power_log_weight(weight: LogWeight, scalar: `float` as float) -> LogWeight
 
-    def `GetLogToTropicalConverter` as get_log_to_tropical_converter() -> (w: LogWeight) -> TropicalWeight:
-      """Returns a callable for converting log weight to tropical weight."""
+    def `GetLogToTropicalConverter` as get_log_to_tropical_converter() -> (w: LogWeight) -> TropicalWeight
 
-    def `GetTropicalToLogConverter` as get_tropical_to_log_converter() -> (w: TropicalWeight) -> LogWeight:
-      """Returns a callable for converting tropical weight to log weight."""
+    def `GetTropicalToLogConverter` as get_tropical_to_log_converter() -> (w: TropicalWeight) -> LogWeight
 
     # class `WeightConvert<LogWeight, TropicalWeight>` as ConvertLogToTropical:
     #   def __call__(self, w: LogWeight) -> TropicalWeight
