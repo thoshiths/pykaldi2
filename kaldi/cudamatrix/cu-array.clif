@@ -15,55 +15,33 @@ from "cudamatrix/cu-array.h":
       @add__init__
       def `CuArray` as from_other(self, src: CuArray)
 
-      def `Dim` as dim(self) -> int:
-        """
-        Returns:
-          This vector dimension
-        """
+      def `Dim` as dim(self) -> int
 
       def `Dim` as __len__(self) -> int
 
-      def `Resize` as resize(self, dim: int, resize_type: MatrixResizeType = default):
-        """Allocate the memory."""
+      def `Resize` as resize(self, dim: int, resize_type: MatrixResizeType = default)
 
-      def `Destroy` as destroy(self):
-        """Deallocate the memory and set dim_ and data_ to zero."""
+      def `Destroy` as destroy(self)
 
-      def `CopyFromVec` as copy_from_vec(self, src: list<int>):
-        """This function resizes if needed."""
+      def `CopyFromVec` as copy_from_vec(self, src: list<int>)
 
-      def `CopyFromArray` as copy_from_array(self, src: CuArray):
-        """This function resizes if needed."""
+      def `CopyFromArray` as copy_from_array(self, src: CuArray)
 
-      def `CopyToVec` as copy_to_vec(self) -> list<int>:
-        """This function resizes dst if needed."""
+      def `CopyToVec` as copy_to_vec(self) -> list<int>
 
-      def `SetZero` as set_zero(self):
-        """Sets the memory for the object to zero."""
+      def `SetZero` as set_zero(self)
 
-      def `Set` as set(self, value: int):
-        """Set to a constant value."""
+      def `Set` as set(self, value: int)
 
-      def `Add` as add(self, value: int):
-        """Add a constant value"""
+      def `Add` as add(self, value: int)
 
-      def `Min` as min(self) -> int:
-        """
-        Returns:
-          Minimum value
-        """
+      def `Min` as min(self) -> int
 
-      def `Max` as max(self) -> int:
-        """
-        Returns:
-          Maximum value
-        """
+      def `Max` as max(self) -> int
 
-      def `Read` as read(self, is: istream, binary: bool):
-        """I/O"""
+      def `Read` as read(self, is: istream, binary: bool)
 
-      def `Write` as write(self, os: ostream, binary: bool):
-        """I/O"""
+      def `Write` as write(self, os: ostream, binary: bool)
 
 
     class `CuArray<Int32Pair>` as CuIntPairArray:
@@ -77,84 +55,54 @@ from "cudamatrix/cu-array.h":
       @add__init__
       def `CuArray` as from_other(self, src: CuIntPairArray)
 
-      def `Dim` as dim(self) -> int:
-        """
-        Returns:
-          This vector dimension
-        """
+      def `Dim` as dim(self) -> int
 
       def `Dim` as __len__(self) -> int
 
-      def `Resize` as resize(self, dim: int, resize_type: MatrixResizeType = default):
-        """Allocate the memory."""
+      def `Resize` as resize(self, dim: int, resize_type: MatrixResizeType = default)
 
-      def `Destroy` as destroy(self):
-        """Deallocate the memory and set dim_ and data_ to zero."""
+      def `Destroy` as destroy(self)
 
-      def `CopyFromVec` as copy_from_vec(self, src: list<IntPair>):
-        """This function resizes if needed."""
+      def `CopyFromVec` as copy_from_vec(self, src: list<IntPair>)
 
-      def `CopyFromArray` as copy_from_array(self, src: CuIntPairArray):
-        """This function resizes if needed."""
+      def `CopyFromArray` as copy_from_array(self, src: CuIntPairArray)
 
-      def `CopyToVec` as copy_to_vec(self) -> list<IntPair>:
-        """This function resizes dst if needed."""
+      def `CopyToVec` as copy_to_vec(self) -> list<IntPair>
 
-      def `SetZero` as set_zero(self):
-        """Sets the memory for the object to zero."""
+      def `SetZero` as set_zero(self)
 
-      def `Set` as set(self, value: IntPair):
-        """Set to a constant value."""
+      def `Set` as set(self, value: IntPair)
 
-      def `Add` as add(self, value: IntPair):
-        """Add a constant value"""
+      def `Add` as add(self, value: IntPair)
 
     class `CuArray<float*>` as CuFloatPtrArray:
       @add__init__
       def `CuArray` as from_size(self, dim: int,
                                      resize_type: MatrixResizeType = default)
 
-      # @add__init__
-      # def `CuArray` as from_vector(self, src: list<`float` as float>)
 
       @add__init__
       def `CuArray` as from_other(self, src: CuFloatPtrArray)
 
-      def `Dim` as dim(self) -> int:
-        """
-        Returns:
-          This vector dimension
-        """
-
+      def `Dim` as dim(self) -> int
+      
       def `Dim` as __len__(self) -> int
 
-      def `Resize` as resize(self, dim: int, resize_type: MatrixResizeType = default):
-        """Allocate the memory."""
+      def `Resize` as resize(self, dim: int, resize_type: MatrixResizeType = default)
 
-      def `Destroy` as destroy(self):
-        """Deallocate the memory and set dim_ and data_ to zero."""
+      def `Destroy` as destroy(self)
 
       # def CopyFromVec(self, src: list<`float` as float>)
 
-      def `CopyFromArray` as copy_from_array(self, src: CuFloatPtrArray):
-        """This function resizes if needed."""
+      def `CopyFromArray` as copy_from_array(self, src: CuFloatPtrArray)
 
-      # def CopyToVec(self) -> list<`float` as float>
+    
 
-      def `SetZero` as set_zero(self):
-        """Sets the memory for the object to zero."""
+      def `SetZero` as set_zero(self)
 
-      def `Min` as min(self) -> `float` as float:
-        """
-        Returns:
-          Minimum value
-        """
+      def `Min` as min(self) -> `float` as float
 
-      def `Max` as max(self) -> `float` as float:
-        """
-        Returns:
-          Maximum value
-        """
+      def `Max` as max(self) -> `float` as float
 
     class `CuArray<double*>` as CuDoublePtrArray:
       @add__init__
@@ -167,38 +115,22 @@ from "cudamatrix/cu-array.h":
       @add__init__
       def `CuArray` as from_other(self, src: CuDoublePtrArray)
 
-      def `Dim` as dim(self) -> int:
-        """
-        Returns:
-          This vector dimension
-        """
+      def `Dim` as dim(self) -> int
 
       def `Dim` as __len__(self) -> int
 
-      def `Resize` as resize(self, dim: int, resize_type: MatrixResizeType = default):
-        """Allocate the memory."""
+      def `Resize` as resize(self, dim: int, resize_type: MatrixResizeType = default)
 
-      def `Destroy` as destroy(self):
-        """Deallocate the memory and set dim_ and data_ to zero."""
+      def `Destroy` as destroy(self)
 
       # def `CopyFromVec` as copy_from_vec(self, src: list<float>)
 
-      def `CopyFromArray` as copy_from_array(self, src: CuDoublePtrArray):
-        """This function resizes if needed."""
+      def `CopyFromArray` as copy_from_array(self, src: CuDoublePtrArray)
 
       # def `CopyToVec` as copy_to_vec(self) -> list<float>
 
-      def `SetZero` as set_zero(self):
-        """Sets the memory for the object to zero."""
+      def `SetZero` as set_zero(self)
 
-      def `Min` as min(self) -> float:
-        """
-        Returns:
-          Minimum value
-        """
+      def `Min` as min(self) -> float
 
-      def `Max` as max(self) -> float:
-        """
-        Returns:
-          Maximum value
-        """
+      def `Max` as max(self) -> float
