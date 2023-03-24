@@ -125,7 +125,7 @@ function(add_pyclif_library name pyclif_file)
   string(REPLACE "-" "_" module_name ${name})
 
   if(PYTHON_VERSION_MAJOR EQUAL 3)
-    set(PYOUTPUT "--py3output")
+    set(PYOUTPUT "")
   else()
     set(PYOUTPUT "--py2output")
   endif()
