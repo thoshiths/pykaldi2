@@ -10,7 +10,7 @@ from "itf/context-dep-itf.h":
       def `CentralPosition` as central_position(self) -> int
 
       def `Compute` as compute(self, phoneseq: list<int>, pdf_class: int)
-        -> (success: bool, pdf_id: int)
+        -> (success: bool, pdf_id: int):
         return _value_error_on_false(...)
 
       def `GetPdfInfo` as get_pdf_info(self, phones: list<int>,
