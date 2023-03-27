@@ -15,14 +15,11 @@ from "ivector/logistic-regression.h":
       def `Register` as register(self, opts: OptionsItf)
 
     class LogisticRegression:
-      def `Train` as train(self, xs:Matrix, ys: list<int>, conf:LogisticRegressionConfig):
-        """xs and ys are the trainning data. Each row of xs is a vector corresponding to the class label in the same row of ys."""
+      def `Train` as train(self, xs:Matrix, ys: list<int>, conf:LogisticRegressionConfig)
 
-      def `GetLogPosteriors` as get_log_posteriors_matrix(self, xs: Matrix) -> (log_posteriors: Matrix):
-        """Calculates the log posterior of the class label given the input xs"""
+      def `GetLogPosteriors` as get_log_posteriors_matrix(self, xs: Matrix) -> (log_posteriors: Matrix)
 
-      def `GetLogPosteriors` as get_log_posteriors_vector(self, x: Vector) -> (log_posteriors: Vector):
-        """Calculates the log posterior of the class label given the input x."""
+      def `GetLogPosteriors` as get_log_posteriors_vector(self, x: Vector) -> (log_posteriors: Vector)
 
       def `Write` as write(self, os: ostream, binary:bool)
 
