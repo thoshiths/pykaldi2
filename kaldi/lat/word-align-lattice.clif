@@ -7,39 +7,25 @@ from "hmm/transition-model-clifwrap.h" import *
 from "lat/word-align-lattice.h":
   namespace `kaldi`:
     class WordBoundaryInfoNewOpts:
-      """Options for word alignment using word boundary phones."""
+      
       silence_label: int
-      """Label for silence arcs."""
+      
       partial_word_label: int
-      """Label for partial word arcs at the end of "forced-out" utterances."""
+      
       reorder: bool
-      """Whether lattice was created from a graph with reorder option set."""
+      
 
-      def `Register` as register(self, opts: OptionsItf):
-        """Registers options with an object implementing the options interface.
-
-        Args:
-          opts (OptionsItf): An object implementing the options interface.
-            Typically a command-line option parser.
-        """
+      def `Register` as register(self, opts: OptionsItf)
 
     class WordBoundaryInfo:
-      """WordBoundaryInfo(opts)
-
-      Word boundary information.
-
-      Args:
-        opts (WordBoundaryInfoNewOpts): Decoder options.
-      """
+      
       def __init__(self, opts: WordBoundaryInfoNewOpts)
 
       @add__init__
       def `WordBoundaryInfo` as from_file(
-        self, opts: WordBoundaryInfoNewOpts, word_boundary_file: str):
-        """Creates a new `WordBoundaryInfo` object from file."""
+        self, opts: WordBoundaryInfoNewOpts, word_boundary_file: str)
 
-      def `Init` as init(self, is: istream):
-        """Initializes with information read from an input stream."""
+      def `Init` as init(self, is: istream)
 
       enum PhoneType with:
         `kNoPhone` as NO_PHONE
@@ -49,24 +35,16 @@ from "lat/word-align-lattice.h":
         `kWordInternalPhone` as WORD_INTERNAL_PHONE
         `kNonWordPhone` as NON_WORD_PHONE
 
-      def `TypeOfPhone` as type_of_phone(self, p: int) -> PhoneType:
-        """Looks up the type of the given phone id.
-
-        Args:
-          p (int): The input phone id.
-
-        Returns:
-          PhoneType: The type of input phone id.
-        """
+      def `TypeOfPhone` as type_of_phone(self, p: int) -> PhoneType 
 
       phone_to_type: list<PhoneType>
-      """Mapping from phone ids to phone types."""
+      
       silence_label: int
-      """Label for silence arcs."""
+      
       partial_word_label: int
-      """Label for partial word arcs at the end of "forced-out" utterances."""
+      
       reorder: bool
-      """Whether lattice was created from a graph with reorder option set."""
+      
 
 
     def `WordAlignLattice` as _word_align_lattice(
@@ -77,15 +55,4 @@ from "lat/word-align-lattice.h":
 
     def `TestWordAlignedLattice` as test_word_aligned_lattice(
       lat: CompactLatticeVectorFst, tmodel: TransitionModel,
-      info: WordBoundaryInfo, aligned_lat: CompactLatticeVectorFst):
-      """Verifies the output of `word_align_lattice`.
-
-      Args:
-        lat (CompactLatticeVectorFst): The input lattice.
-        tmodel (TransitionModel): The transition model.
-        info (WordBoundaryInfo): The word boundary information.
-        aligned_lat (CompactLatticeVectorFst): The word-aligned lattice.
-
-      Raises:
-        RuntimeError: If verification fails.
-      """
+      info: WordBoundaryInfo, aligned_lat: CompactLatticeVectorFst)

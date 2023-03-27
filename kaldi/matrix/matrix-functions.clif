@@ -31,10 +31,4 @@ from "matrix/matrix-functions.h":
             plus:MatrixBase, minus:MatrixBase)
 
         def `AssertSameDim` as assert_same_dim_matrix(mat1:MatrixBase,
-                                                      mat2:MatrixBase):
-          """Checks if mat1 and mat2 have the same dimensions.
-
-          Raises:
-              Error if mat1.num_rows!=mat2.num_rows
-              or mat1.num_cols!=mat2.num_cols
-          """
+                                                      mat2:MatrixBase)

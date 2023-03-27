@@ -17,18 +17,7 @@ from "fstext/special-ops.h":
         ifst: StdVectorFst, ofst: StdVectorFst) -> list<list<int>>
 
     def `AddSubsequentialLoopExt` as add_subsequential_loop(
-        subseq_symbol: int, fst: StdMutableFst):
-      """Adds a subsequential symbol loop to the input FST.
-
-      Modifies the FST so that it transuces the same paths, but the input side
-      of the paths can all have the subsequential symbol '$' appended to them
-      any number of times.
-
-      Args:
-        subseq_symbol (int): Integer index for the subsequential symbol.
-        fst (StdFst): Input FST.
-      """
-
+        subseq_symbol: int, fst: StdMutableFst)
     def `ComposeDeterministicOnDemandExt` as _compose_deterministic_on_demand(
       fst1: StdFst, fst2: StdDeterministicOnDemandFst, ofst: StdMutableFst)
 
@@ -55,16 +44,4 @@ from "fstext/special-ops.h":
                                        delta: float = default, to_final: bool = default)
 
     def `DeterminizeStarInLogExt` as determinize_star_in_log(
-      fst: StdVectorFst, delta: float = default, max_states: int = default):
-      """Performs determinize_star in place in log semiring.
-
-      Args:
-          ifst (StdFst): Input fst over the tropical semiring.
-          delta (float): Comparison/quantization delta.
-          max_states (int): If positive, determinization will fail when max states
-              is reached.
-      Raises:
-          RuntimeError: If determization fails.
-
-      See Also: :meth:`determinize_star`
-      """
+      fst: StdVectorFst, delta: float = default, max_states: int = default)
